@@ -1,11 +1,14 @@
-const boxesRef = document.querySelector('#boxes');
-const renderRef = document.querySelector('button[data-action="render"]');
-const destroyRef = document.querySelector('button[data-action="destroy"]');
-const inputRef = document.querySelector('#controls>input');
+const ref = {
+  boxes: document.querySelector('#boxes'),
+  render: document.querySelector('button[data-action="render"]'),
+  destroy: document.querySelector('button[data-action="destroy"]'),
+  input: document.querySelector('#controls>input'),
+};
+
 const random = () => Math.floor(Math.random() * 256);
 
 const getAmount = () => {
-  const amount = inputRef.value;
+  const amount = ref.input.value;
   createBoxes(amount);
 };
 
@@ -17,13 +20,13 @@ const createBoxes = amount => {
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = `rgba( ${random()} , ${random()} , ${random()}`;
-    boxesRef.appendChild(box);
+    ref.boxes.appendChild(box);
   }
 };
 
 const destroyBoxes = () => {
-  boxesRef.innerHTML = '';
+  ref.boxes.innerHTML = '';
 };
 
-renderRef.addEventListener('click', getAmount);
-destroyRef.addEventListener('click', destroyBoxes);
+ref.render.addEventListener('click', getAmount);
+ref.destroy.addEventListener('click', destroyBoxes);
