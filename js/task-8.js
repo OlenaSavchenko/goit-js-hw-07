@@ -13,6 +13,7 @@ const getAmount = () => {
 };
 
 const createBoxes = amount => {
+  const prevBox = document.createElement('div');
   for (let i = 0; i < amount; i += 1) {
     const box = document.createElement('div');
     let size = 30;
@@ -20,8 +21,9 @@ const createBoxes = amount => {
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = `rgba( ${random()} , ${random()} , ${random()}`;
-    ref.boxes.appendChild(box);
+    prevBox.appendChild(box);
   }
+  ref.boxes.appendChild(prevBox);
 };
 
 const destroyBoxes = () => {
